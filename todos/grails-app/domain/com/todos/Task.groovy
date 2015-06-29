@@ -8,6 +8,11 @@ class Task {
     Boolean isDone
 
     static constraints = {
+        title()
+        description maxSize: 5000
+        startDate()
+        endDate()
+        isDone()
     }
 
     String toString() {
