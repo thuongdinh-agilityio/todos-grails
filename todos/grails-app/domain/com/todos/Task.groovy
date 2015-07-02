@@ -8,6 +8,8 @@ class Task {
     Boolean isDone
     User user
 
+    static hasMany = [contributes: User]
+
     static constraints = {
         title()
         description maxSize: 5000
