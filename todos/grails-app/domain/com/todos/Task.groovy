@@ -6,6 +6,7 @@ class Task {
     Date startDate
     Date endDate
     Boolean isDone
+    User user
 
     static constraints = {
         title()
