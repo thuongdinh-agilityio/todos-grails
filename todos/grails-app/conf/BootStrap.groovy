@@ -3,6 +3,18 @@ import com.todos.*
 class BootStrap {
 
     def init = { servletContext ->
+        // Generate User data
+        new User(fullName: 'John Doe',
+                 userName: 'jdoe',
+                 password: 'test@123',
+                 email: 'jdoe@domain.com',
+                 bio: 'Something good about John').save()
+        new User(fullName: 'John Deere',
+                 userName: 'tractorman',
+                 password: 'test@123',
+                 email: 'tractorman@domain.com',
+                 bio: 'Something good about John Deere').save()
+
         def task01 = new Task(title: 'This is the first title',
                      startDate: new Date('11/21/2013'),
                      endDate: new Date('11/21/2013'),
@@ -13,7 +25,8 @@ class BootStrap {
                                      top of your game! But, don't stay home!
                                      Come an join us this fall for the first
                                      annual Gateway Code Camp.''',
-                     isDone: false)
+                     isDone: false,
+                     user: User.findByFullName('John Doe'))
 
         if (!task01.save()) {
             task01.errors.allErrors.each{error ->
@@ -32,7 +45,8 @@ class BootStrap {
                                      Come and join us in historic (and
                                      aromatic), Austin, Minnesota.
                                      You'll know when you're there!''',
-                     isDone: false)
+                     isDone: false,
+                     user: User.findByFullName('John Deere'))
 
         if (!task02.save()) {
             task02.errors.allErrors.each{error ->
