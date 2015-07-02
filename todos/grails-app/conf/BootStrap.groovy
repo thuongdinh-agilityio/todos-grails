@@ -33,12 +33,12 @@ class BootStrap {
                                      aromatic), Austin, Minnesota.
                                      You'll know when you're there!''',
                      isDone: false)
-        
-         if (!task02.save()) {
-             task02.errors.allErrors.each{error ->
-                 println "An error occured with task02: ${error}"
-             }
-         }
+
+        if (!task02.save()) {
+            task02.errors.allErrors.each{error ->
+                println "An error occured with task02: ${error}"
+            }
+        }
     }
     def destroy = {
     }
