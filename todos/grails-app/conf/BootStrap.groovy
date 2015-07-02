@@ -15,6 +15,7 @@ class BootStrap {
                  email: 'tractorman@domain.com',
                  bio: 'Something good about John Deere').save()
 
+        // Generate Task
         def task01 = new Task(title: 'This is the first title',
                      startDate: new Date('11/21/2013'),
                      endDate: new Date('11/21/2013'),
@@ -53,6 +54,22 @@ class BootStrap {
                 println "An error occured with task02: ${error}"
             }
         }
+
+        // Generate list of contributes for each task
+        def g1 = Task.findByTitle('This is the first title')
+        g1.addToContributes(new User(fullName: 'Sarah Martin',
+                                     userName: 'sarah',
+                                     password: 'test@123',
+                                     email: 'sarah@domain.com',
+                                     bio: 'Something good about Sarah Martin'))
+
+        g1.addToContributes(new User(fullName: 'Bill Smith',
+                                     userName: 'Mr_Bill',
+                                     password: 'test@123',
+                                     email: 'mrbill@domain.com',
+                                     bio: 'Something good about Bill Smith'))
+
+        g1.save()
     }
     def destroy = {
     }
