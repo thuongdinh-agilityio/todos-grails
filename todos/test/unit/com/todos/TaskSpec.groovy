@@ -18,7 +18,8 @@ class TaskSpec extends Specification {
     void "test toString"() {
         when: "a task has a title"
             def task = new Task(title: 'This is a test title',
-                                        description: 'this is a test des')
+                                description: 'this is a test des',
+                                user: [fullName: 'John Doe'] as User)
 
         then: "the toString method will combine them."
             task.toString() == 'This is a test title'
